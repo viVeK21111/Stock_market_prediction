@@ -71,6 +71,7 @@ datagn['Adj Close'] = scaler2.fit_transform(datagn['Adj Close'].values.reshape(-
 datagn['Volatility']=scaler3.fit_transform(datagn['Volatility'].values.reshape(-1,1))
 datagn['RSI'] = scaler4.fit_transform(datagn['RSI'].values.reshape(-1,1))
 datagn['Volume Change'] = scaler5.fit_transform(datagn['Volume Change'].values.reshape(-1,1)) 
+datagn=datagn.dropna()
 datagn= datagn.values
 datagn = datagn.reshape(1,datagn.shape[0],datagn.shape[1])
 days=3
