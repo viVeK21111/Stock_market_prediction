@@ -84,8 +84,11 @@ dff1 = temp['Adj Close'][-ldays:] # last ten days
 date_index = pd.date_range(start=dt.date.today(), periods=days, freq='D')
 dff = pd.DataFrame(index=date_index)
 dff['Adj Close']=ele[0]
+st.write(ele[0])
+st.write((dff))
 dff = dff.rename_axis('Date')
 dff2 = pd.concat([dff1,dff],axis=0)
+st.write(dff2)
 
 combined_df = dff2
 plt.figure(figsize=(12, 6))
