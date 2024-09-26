@@ -45,9 +45,9 @@ scaler2 = joblib.load('models/scaler2.pkl')
 scaler3 = joblib.load('models/scaler3.pkl')
 scaler4 = joblib.load('models/scaler4.pkl')
 scaler5 = joblib.load('models/scaler5.pkl') 
-datem = dt.date.today() - relativedelta(months=4)
+datem = dt.date.today() - relativedelta(months=5)
 temp = yf.download("GOOGL",datem,dt.date.today())
-timestamps=60+20
+timestamps=100+20
 temp=temp[-timestamps:]
 
 datagn = pd.DataFrame()
