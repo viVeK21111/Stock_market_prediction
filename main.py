@@ -74,7 +74,7 @@ datagn['RSI'] = scaler4.fit_transform(datagn['RSI'].values.reshape(-1,1))
 datagn['Volume Change'] = scaler5.fit_transform(datagn['Volume Change'].values.reshape(-1,1)) 
 datagn= datagn.values
 datagn = datagn.reshape(1,datagn.shape[0],datagn.shape[1])
-
+st.write(datagn)
 days=3
 y_pred=model.predict(datagn)
 ele = scaler2.inverse_transform(y_pred)
