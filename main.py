@@ -77,6 +77,7 @@ datagn = datagn.reshape(1,datagn.shape[0],datagn.shape[1])
 
 days=3
 y_pred=model.predict(datagn)
+st.write(y_pred)
 ele = scaler2.inverse_transform(y_pred)
 ldays = st.number_input("Select number of past days to display", min_value=5, max_value=15, value=7, step=1)
 
@@ -84,8 +85,8 @@ dff1 = temp['Adj Close'][-ldays:] # last ten days
 date_index = pd.date_range(start=dt.date.today(), periods=days, freq='D')
 dff = pd.DataFrame(index=date_index)
 dff['Adj Close']=ele[0]
-st.write(y_pred)
-st.write((dff))
+
+st.write(dff)
 dff = dff.rename_axis('Date')
 dff2 = pd.concat([dff1,dff],axis=0)
 st.write(dff2)
