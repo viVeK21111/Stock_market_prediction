@@ -47,7 +47,7 @@ scaler4 = joblib.load('models/scaler4.pkl')
 scaler5 = joblib.load('models/scaler5.pkl') 
 datem = dt.date.today() - relativedelta(months=4)
 temp = yf.download("GOOGL",datem,dt.date.today())
-timestamps=60+20 
+timestamps=60+20
 temp=temp[-timestamps:]
 
 datagn = pd.DataFrame()
@@ -66,7 +66,6 @@ def calculate_rsi(data, period):
 period =20
 datagn['RSI'] = calculate_rsi(temp,period)
 datagn['Adj Close']=temp['Adj Close']
-
 datagn['MA_10'] = scaler1.fit_transform(datagn['MA_10'].values.reshape(-1,1))
 datagn['Adj Close'] = scaler2.fit_transform(datagn['Adj Close'].values.reshape(-1,1))
 datagn['Volatility']=scaler3.fit_transform(datagn['Volatility'].values.reshape(-1,1))
@@ -74,7 +73,6 @@ datagn['RSI'] = scaler4.fit_transform(datagn['RSI'].values.reshape(-1,1))
 datagn['Volume Change'] = scaler5.fit_transform(datagn['Volume Change'].values.reshape(-1,1)) 
 datagn= datagn.values
 datagn = datagn.reshape(1,datagn.shape[0],datagn.shape[1])
-st.write(datagn)
 days=3
 y_pred=model.predict(datagn)
 ele = scaler2.inverse_transform(y_pred)
